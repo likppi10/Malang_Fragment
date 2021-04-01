@@ -43,11 +43,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp">
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/fragment_a"
+                    class="bias.hugoandrade.calendarviewapp.FragmentA"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:background="@color/M_Malang"
                     android:weightSum="4"
                     android:id="@+id/emotion">
 
@@ -57,8 +61,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:id="@+id/schedule"
-                    android:weightSum="4"
-                    android:background="@color/M_Malang_shadow">
+                    android:weightSum="4">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

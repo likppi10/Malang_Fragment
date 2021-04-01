@@ -248,6 +248,10 @@ public class CalendarView extends FrameLayout {
             }
         });
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
         setWeekHeader(this, mAttributes.get(Attr.weekHeaderMovable) == 1? GONE : VISIBLE);
 
         ivPrevious = findViewById(R.id.ib_previous_month);
@@ -629,6 +633,7 @@ public class CalendarView extends FrameLayout {
             return dayList.size();
         }
 
+
         private void onBindView(int position,
                                 final Calendar month,
                                 final YMDCalendar day,
@@ -638,12 +643,14 @@ public class CalendarView extends FrameLayout {
                                 final List<View> viewCalendarList,
                                 final List<YMDCalendar> CalendardayList) {
 
+
             final FrameLinearLayout container = (FrameLinearLayout) view;
             final SelectedTextView tvDay = view.findViewById(R.id.tv_calendar_day);
             final LinearLayout first_schedule = view.findViewById(R.id.first_schedule);
             final LinearLayout second_schedule = view.findViewById(R.id.second_schedule);
             final LinearLayout third_schedule = view.findViewById(R.id.third_schedule);
             final LinearLayout schedule = view.findViewById(R.id.schedule);
+
             //MultipleTriangleView vNotes = view.findViewById(R.id.v_notes);
 
 
@@ -913,8 +920,7 @@ public class CalendarView extends FrameLayout {
                     }
                 });
 ///////////
-
-
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //                //schedule.animate().rotationYBy(90f).setDuration(2000).start();
 //                schedule.animate().rotationXBy(180f).setDuration(10).start();
 //                schedule.animate().rotationBy(180f).setDuration(10).start();
@@ -1264,6 +1270,8 @@ public class CalendarView extends FrameLayout {
                 mViewPager.setCurrentItem(mInitialPage, false);
             }
         }
+
+
 
         public void setCurrentDate(Calendar date) {
             final YMDCalendar previousDate = mCurrentDate.clone();
