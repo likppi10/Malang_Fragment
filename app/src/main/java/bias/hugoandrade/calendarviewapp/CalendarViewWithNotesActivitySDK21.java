@@ -29,10 +29,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import bias.hugoandrade.calendarviewapp.data.Event;
@@ -68,6 +72,9 @@ public class CalendarViewWithNotesActivitySDK21 extends AppCompatActivity  {
     private int DataYear = 0;
     private int DataMonth = 0;
 
+    FragmentManager manager;
+    FragmentB fragmentb;
+
     String Gender = user.getUSER_Gender() == 0 ? "CALENDAR_GIRL" : "CALENDAR_MAN";
     String O_Gender = user.getUSER_Gender() == 0 ? "CALENDAR_MAN" : "CALENDAR_GIRL";
 
@@ -88,6 +95,9 @@ public class CalendarViewWithNotesActivitySDK21 extends AppCompatActivity  {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mCalendarView = findViewById(R.id.calendarView);
+
+        manager = getSupportFragmentManager();
+        fragmentb = new FragmentB();
 
         DataYear = mCalendarView.getCurrentDate().get(Calendar.YEAR);
         DataMonth = mCalendarView.getCurrentDate().get(Calendar.MONTH)+1;
@@ -122,15 +132,25 @@ public class CalendarViewWithNotesActivitySDK21 extends AppCompatActivity  {
             @Override
             public void onItemClicked(List<CalendarView.CalendarObject> calendarObjects,
                                       Calendar previousDate,
-                                      Calendar selectedDate) {
+                                      Calendar selectedDate,
+                                      LinearLayout schedule) {
 
+                Log.d("민규규", "schedule.getResources() = " + schedule.getResources());
                 if (calendarObjects.size() != 0) {
                     mCalendarDialog.setSelectedDate(selectedDate);
                     mCalendarDialog.show();
+
+
                 }
                 else {
-                    if (diffYMD(previousDate, selectedDate) == 0)
-                        createEvent(selectedDate);
+                    //schedule.setBackgroundResource(R.color.Mint);
+
+                    FragmentTransaction ft = manager.beginTransaction();
+                    ft.replace(schedule.getResources(), fragmentb);
+                    ft.commit();
+
+//                    if (diffYMD(previousDate, selectedDate) == 0)
+//                        createEvent(selectedDate);
                 }
             }
         });

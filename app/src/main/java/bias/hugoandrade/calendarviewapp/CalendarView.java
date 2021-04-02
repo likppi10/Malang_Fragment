@@ -552,6 +552,15 @@ public class CalendarView extends FrameLayout {
             Calendar month = (Calendar) mInitialMonth.clone();
             month.add(Calendar.MONTH, position - mInitialPage);
 
+//             LayoutInflater vi = LayoutInflater.from(container.getContext());
+//
+//            if (monthContainer != null) {
+//                ViewGroup parent = (ViewGroup) monthContainer.getParent();
+//                if (parent != null)
+//                    parent.removeView(monthContainer);
+//            }
+//            monthContainer = vi.inflate(R.layout.xml_calendar_container, container, false);
+
 /////////* R.layout.xml_calendar_container : 일정 입력 시 시간 선택하는 작은 캘린더 창을 구성하는 캘린더, 처음의 달력 전체화면 */
             LayoutInflater vi = LayoutInflater.from(container.getContext());
             monthContainer = vi.inflate(R.layout.xml_calendar_container, container, false);
@@ -650,12 +659,11 @@ public class CalendarView extends FrameLayout {
             final LinearLayout second_schedule = view.findViewById(R.id.second_schedule);
             final LinearLayout third_schedule = view.findViewById(R.id.third_schedule);
             final LinearLayout schedule = view.findViewById(R.id.schedule);
-
             //MultipleTriangleView vNotes = view.findViewById(R.id.v_notes);
 
 
-//            FragmentTransaction ft = new FragmentTransaction(getSupportFragmentManager().beginTransaction());
-//            ft.replace(R.id.layout_fragment, ExampleFragment.newInstance(ExampleFragment.NODIR));
+//            FragmentTransaction ft = new FragmentTransaction(getgetSupportFragmentManager().beginTransaction());
+//            ft.replace(R.id.day_item_1_1, ExampleFragment.newInstance(ExampleFragment.NODIR));
 //            ft.commit();
 
 
@@ -1034,20 +1042,25 @@ public class CalendarView extends FrameLayout {
                                 public void run() {
                                     runListener(calendarObjectList,
                                             YMDCalendar.toCalendar(previousDate),
-                                            YMDCalendar.toCalendar(day));
+                                            YMDCalendar.toCalendar(day),
+                                            schedule);
+                                    Log.d("민규규", "schedule11 = " + schedule);
                                 }
                             };
                         } else {
                             runListener(calendarObjectList,
                                     YMDCalendar.toCalendar(previousDate),
-                                    YMDCalendar.toCalendar(day));
+                                    YMDCalendar.toCalendar(day),
+                                    schedule);
+                            Log.d("민규규", "schedule22 = " + schedule);
                         }
 
                     }
 
-                    private void runListener(List<CalendarObject> calendarObjectList, Calendar previousDate, Calendar selectedDate) {
+                    private void runListener(List<CalendarObject> calendarObjectList, Calendar previousDate, Calendar selectedDate,  LinearLayout schedule) {
                         if (mListener != null)
-                            mListener.onItemClicked(calendarObjectList, previousDate, selectedDate);
+                            Log.d("민규규", "schedule33 = " + schedule);
+                            mListener.onItemClicked(calendarObjectList, previousDate, selectedDate, schedule);
 
 
                     }
@@ -1700,7 +1713,7 @@ public class CalendarView extends FrameLayout {
     }
 
     public interface OnItemClickListener {
-        void onItemClicked(List<CalendarObject> calendarObjects, Calendar previousDate, Calendar selectedDate);
+        void onItemClicked(List<CalendarObject> calendarObjects, Calendar previousDate, Calendar selectedDate, LinearLayout schedule);
     }
     public interface OnItemTouchListener {
         void onItemTouched(String title, int count, Calendar selectedDate, Calendar startDate, String Uid);

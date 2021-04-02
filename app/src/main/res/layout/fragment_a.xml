@@ -1,15 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<!--가장 작은 날짜 단위 xml-->
+<bias.hugoandrade.calendarviewapp.helpers.FrameLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFAAAA">
+    android:orientation="vertical"
+    android:gravity="center"
+    app:frame_width="0dp"
+    app:frame_color="@android:color/transparent"
+    android:layout_gravity="center|bottom"
+    >
 
-    <TextView
+<!--    <ImageView-->
+<!--        android:id="@+id/buttonLeft"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="left|center"-->
+<!--        android:src="@drawable/ic_left"-->
+<!--        android:padding="8dp"-->
+<!--        android:background="?attr/selectableItemBackground"-->
+<!--        />-->
+
+
+    <bias.hugoandrade.calendarviewapp.helpers.SelectedTextView
+        android:id="@+id/tv_calendar_day"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:selected_padding="2dp"
+        tools:enable="true"
+        tools:text="14"
+        android:layout_gravity="center_horizontal"/>
+
+    <!--org.hugoandrade.calendarviewapp.helpers.MultipleTriangleView
+        android:id="@+id/v_notes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Fragment A"
-        android:textSize="15sp"
-        android:id="@+id/txtMessage"/>
+        android:padding="2dp"
+        android:layout_marginTop="30dp"
+        app:mtr_direction="top_left"
+        app:mtr_separator_width="2dp"
+        app:mtr_number_of_items="4"
+        app:mtr_view_direction="vertical"
+        /-->
 
-</LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:id="@+id/layout_fragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="4"
+            android:id="@+id/emotion">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/schedule"
+            android:weightSum="4">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/first_schedule"
+                android:orientation="horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/second_schedule"
+                android:layout_weight="1"
+                android:orientation="vertical" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/third_schedule"
+                android:layout_weight="1"
+                android:orientation="vertical"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+</bias.hugoandrade.calendarviewapp.helpers.FrameLinearLayout>

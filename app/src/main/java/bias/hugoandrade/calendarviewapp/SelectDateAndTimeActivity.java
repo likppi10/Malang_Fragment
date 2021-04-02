@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 
 
 import bias.hugoandrade.calendarviewapp.R;
@@ -85,7 +86,7 @@ public class SelectDateAndTimeActivity extends AppCompatActivity {
             @Override
             public void onItemClicked(List<CalendarView.CalendarObject> calendarObjects,
                                       Calendar previousDate,
-                                      Calendar selectedDate) {
+                                      Calendar selectedDate, LinearLayout schedule) {
                 cvSelect.setCurrentDate(selectedDate);
             }
         });

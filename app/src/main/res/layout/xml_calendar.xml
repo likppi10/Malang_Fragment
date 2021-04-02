@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <include
         android:id="@+id/day_item_1_1"
         layout="@layout/xml_grid_item_day"
@@ -20,6 +21,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread"/>
 
+<!--    <fragment-->
+<!--        android:id="@+id/day_item_1_1"-->
+<!--            android:name="bias.hugoandrade.calendarviewapp.FragmentA"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+
+<!--            app:layout_constraintBottom_toTopOf="@+id/day_item_2_1"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/day_item_1_2"-->
+<!--            app:layout_constraintHorizontal_chainStyle="spread"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_chainStyle="spread"/>-->
     <include
         android:id="@+id/day_item_1_2"
         layout="@layout/xml_grid_item_day"
